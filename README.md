@@ -1,5 +1,7 @@
 # go-combiner
 
+[![Build Status](https://travis-ci.org/ddliu/go-combiner.png?branch=master)](https://travis-ci.org/ddliu/go-combiner)
+
 `go-combiner` is a golang package to combine strings
 
 ## Documentation
