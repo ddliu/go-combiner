@@ -63,6 +63,12 @@ func main() {
 
 Initial release
 
+### v0.1.1 (2013-10-24)
+
+Fix stop walk bug
+
+Add ruandom walk method
+
 ## License
 
 Licensed under the MIT license

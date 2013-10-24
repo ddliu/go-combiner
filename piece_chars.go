@@ -83,7 +83,9 @@ func (this *PieceChars) Walk(callback func(string) bool) {
                     }
                 }
             } else {
-                f(next, i + 1, length)
+                if !f(next, i + 1, length) {
+                    return false
+                }
             }
         }
 

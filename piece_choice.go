@@ -8,13 +8,8 @@ func NewPieceChoice(m map[string]interface{}) Piece {
     o := goption.NewOption(m)
     op := new(PieceChoiceOptions)
     choices := o.MustGet("choices")
-    choicesArr, ok := choices.([]string)
 
-    if !ok {
-        panic("Invalid choices")
-    }
-
-    op.Choices = choicesArr
+    op.Choices = convertChoices(choices)
 
     return &PieceChoice{op}
 }
@@ -37,4 +32,23 @@ func (this *PieceChoice) Walk(f func(string) bool) {
 
 func (this *PieceChoice) Count() uint64 {
     return uint64(len(this.options.Choices))
+}
+
+func convertChoices(choices interface{}) []string {
+    if choicesArr, ok := choices.([]string); ok {
+        return choicesArr
+    } else if choicesArr, ok := choices.([]interface{}); ok {
+        result := make([]string, len(choicesArr))
+
+        for i := 0; i < len(choicesArr); i++ {
+            if v, ok := choicesArr[i].(string); ok {
+                result[i] = v
+            } else {
+                panic("Invalid choices")
+            }
+        }
+        return result
+    }
+    
+    panic("Invalid choices")
 }

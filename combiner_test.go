@@ -121,8 +121,31 @@ func TestCombiner(t *testing.T) {
         t.Errorf("Count error")
     }
 
+    total := 0
     c.Walk(func(s string) bool {
         t.Log(s)
+        total++
+        if total >= 10 {
+            return false
+        }
         return true
     })
+
+    if total != 10 {
+        t.Errorf("Stop walk error")
+    }
+
+    total = 0
+    c.RandWalk(func(s string) bool {
+        t.Log(s)
+        total++
+        if total >= 10 {
+            return false
+        }
+        return true
+    })
+
+    if total != 10 {
+        t.Errorf("Stop walk error")
+    }
 }
