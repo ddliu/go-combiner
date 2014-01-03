@@ -148,4 +148,14 @@ func TestCombiner(t *testing.T) {
     if total != 10 {
         t.Errorf("Stop walk error")
     }
+
+    list := c.GetAll()
+    if uint64(len(list)) != c.Count() {
+        t.Errorf("GetAll error")
+    }
+
+    list = c.RandGetAll()
+    if uint64(len(list)) != c.Count() {
+        t.Errorf("RandGetAll error")
+    }
 }

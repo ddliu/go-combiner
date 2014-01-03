@@ -54,6 +54,9 @@ func main() {
         fmt.Println(s)
         return true
     })
+
+    // Get list of all the combinations
+    list := c.GetAll()
 }
 ```
 
@@ -67,7 +70,13 @@ Initial release
 
 Fix stop walk bug
 
-Add ruandom walk method
+Add random walk method
+
+### v0.1.2 (2014-01-03)
+
+Make `Combiner.Count` cacheable.
+
+Add `GetAll` and `RandGetAll` method.
 
 ## License
 
